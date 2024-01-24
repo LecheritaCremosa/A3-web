@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('course', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('course_id')->unique();
+            $table->string('shift')->comment('Tipo De Jornada');
+            $table->foreignId('career_id')->constrained('career')->onDelete('cascade')->onUpdate('cascade');
+            $table->date('initial_date')->comment('Fecha Inicial');
+            $table->date('final_date')->comment('Fecha De Finalización');
+            $table->string('type')->comment('Tipo De Curso');
             $table->timestamps();
         });
     }

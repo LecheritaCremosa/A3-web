@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('instructor', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('document')->primary()->comment('cédula')->unique();
+            $table->string('fullname')->comment('Nombre Completo');
+            $table->string('sena_email')->comment('Email Del Sena');
+            $table->string('personal_email')->comment('Email Personal');
+            $table->string('phone', 30)->nullable()->comment('Teléfono');
+            $table->string('password')->unique()->comment('Contraseña');
+            $table->string('type')->comment('Planta o Contratista');
             $table->timestamps();
+
         });
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use Egulias\EmailValidator\Parser\Comment;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,7 +13,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('location', function (Blueprint $table) {
-            $table->id();
+            $table->id()->comment('ID de la Ubicación');
+            $table->unsignedBigInteger('location_id');
+            $table->string('name')->comment('Nombre De La Ubicación');
+            $table->string('address')->comment('Dirección');
+            $table->string('status')->comment('Estado');
             $table->timestamps();
         });
     }
