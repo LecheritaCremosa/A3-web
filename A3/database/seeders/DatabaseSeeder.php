@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +14,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+       $this->call(CareerSeeder::class);
+       $this->call(CourseSeeder::class);
+       $this->call(EnvironmentTypeSeeder::class);
+       $this->call(LocationSeeder::class);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Instructor::factory()->create([
+            'type' => 'Contratista',
+            'profile' => 'Instructor De Programación']);
+
+        Instructor::factory()->create([
+            'type' => 'Contratista',
+            'profile' => 'Instructor De Inglés']);
+
+        Instructor::factory()->create([
+            'type' => 'Planta',
+            'profile' => 'Instructor De TICS']);
+
+        Instructor::factory()->create([
+            'type' => 'Planta',
+            'profile' => 'Instructor De Matemáticas']);
+        Intructor::factory()->create([
+            'type' => 'Planta',
+            'profile' => 'Instructor De Educación Fisica'
+        ]);
     }
 }
