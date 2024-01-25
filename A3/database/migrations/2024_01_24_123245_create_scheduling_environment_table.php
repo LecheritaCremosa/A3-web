@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('scheduling_environment', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('scheduling_id');
             $table->foreignId('course_id')->constrained('course')
             ->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('document_instructor')->references('document')->on('instructor')
+            $table->foreignId('instructor_id')->constrained('instructor')
             ->onDelete('cascade')->onUpdate('cascade');
             $table->date('date_scheduling')->comment('Fecha De Programación');
             $table->dateTime('initial_hour')->comment('Hora De Inicio');

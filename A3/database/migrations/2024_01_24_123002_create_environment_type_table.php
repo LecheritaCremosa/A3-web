@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('environment_type', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('type_id');
             $table->string('description')->comment('Descripción');
             $table->timestamps();
         });
