@@ -19,7 +19,7 @@ class TestInstructorSeeder extends Seeder
         $instructor->sena_email = 'fabiolarma@sena.edu.co';
         $instructor->personal_email = 'fabiolaamaya654@gmail.co';
         $instructor->phone = '3044276452';
-        $instructor->password = 'password';
+        $instructor->password = 'senapassword';
         $instructor->type = 'Planta';
         $instructor->profile = 'Habilidades blandas';
         $instructor->save();

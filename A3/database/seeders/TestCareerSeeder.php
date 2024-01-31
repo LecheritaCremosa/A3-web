@@ -13,9 +13,9 @@ class TestCareerSeeder extends Seeder
      */
     public function run(): void
     {
-        $career = Career::find(1);
-        $career->name = 'Auxiliar De Enfermeria';
-        $career->type = 'Tecnico';
+        $career = new Career();
+        $career->name = 'AUXILIAR DE ENFERMERIA';
+        $career->type = 'TÉCNICO';
         $career->save();
     }
 }

@@ -14,7 +14,7 @@ class TestLocationSeeder extends Seeder
     public function run(): void
     {
         $location = new Location();
-        $location->name = 'Bicenetenario';
+        $location->name = 'Bicentenario';
         $location->address = 'Cra 22 # 23-19';
         $location->status = 'ACTIVO';
         $location->save();

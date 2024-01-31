@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('course_id')->constrained('course')
             ->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('instructor_id')->constrained('instructor')
+            $table->foreignId('instructor_id')->constrained('instructor', 'document')
             ->onDelete('cascade')->onUpdate('cascade');
             $table->date('date_scheduling')->comment('Fecha De Programación');
             $table->dateTime('initial_hour')->comment('Hora De Inicio');
