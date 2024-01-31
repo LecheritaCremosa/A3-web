@@ -45,5 +45,8 @@ class DatabaseSeeder extends Seeder
         User::factory(5)->create();
 
         $this->call(TestCareerSeeder::class);*/
+       // $this->call(TestEnvironmentTypeSeeder::class);
+      // $this->call(TestInstructorSeeder::class);
+      $this->call(TestLearningEnvironmentSeeder::class);
     }
 }
