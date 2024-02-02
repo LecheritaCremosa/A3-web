@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('instructor_id')->constrained('instructor', 'document')
             ->onDelete('cascade')->onUpdate('cascade');
             $table->date('date_scheduling')->comment('Fecha De Programación');
-            $table->dateTime('initial_hour')->comment('Hora De Inicio');
-            $table->dateTime('final_hour')->comment('Hora De Finalización');
+            $table->time('initial_hour')->comment('Hora De Inicio');
+            $table->time('final_hour')->comment('Hora De Finalización');
             $table->foreignId('environment_id')->constrained('learning_environment')
             ->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('location', function (Blueprint $table) {
-            $table->id()->comment('ID de la Ubicación');
+            $table->id();
             $table->string('name')->comment('Nombre De La Ubicación');
             $table->string('address')->comment('Dirección');
             $table->string('status')->comment('Estado');

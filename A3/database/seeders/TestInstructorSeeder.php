@@ -14,10 +14,10 @@ class TestInstructorSeeder extends Seeder
     public function run(): void
     {
         $instructor = new Instructor();
-        $instructor->document = '1116427912';
+        $instructor->document = '1186427912';
         $instructor->fullname = '	Fabiola Rodriguez Amaya';
-        $instructor->sena_email = 'fabiolarma@sena.edu.co';
-        $instructor->personal_email = 'fabiolaamaya654@gmail.co';
+        $instructor->sena_email = 'fabilaama@sena.edu.co';
+        $instructor->personal_email = 'fabilaraya654@gmail.co';
         $instructor->phone = '3044276452';
         $instructor->password = 'senapassword';
         $instructor->type = 'Planta';

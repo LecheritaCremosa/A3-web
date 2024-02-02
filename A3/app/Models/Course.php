@@ -11,7 +11,7 @@ class Course extends Model
     protected $table = 'course';
     protected $fillable = ['shift', 'career_id', 'initial_date', 'final_date', 'status' ];
 
-    public function carrer()
+    public function carrers()
     {
         return $this->hasMany(Career::class);
     }

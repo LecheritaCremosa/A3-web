@@ -15,7 +15,7 @@ class EnvironmentType extends Model
 
     public function learning_environments()
     {
-        return $this->belongsTo(LearningEnvironment::class);
+        return $this->hasMany(LearningEnvironment::class);
     }
 }
 

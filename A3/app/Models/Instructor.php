@@ -11,7 +11,7 @@ class Instructor extends Model
     protected $table = 'instructor';
     protected $fillable = ['full_name', 'sena_email', 'personal_email', 'phone', 'password', 'type', 'profile'];
 
-    public function scheduling_environment()
+    public function scheduling_environments()
     {
         return $this->hasMany(SchedulingEnvironment::class);
     }

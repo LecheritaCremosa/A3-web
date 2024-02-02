@@ -9,9 +9,9 @@ class SchedulingEnvironment extends Model
 {
     use HasFactory;
     protected $table = 'scheduling_environment';
-    protected $fillable = ['course_id', 'document_instructor', 'date_scheduling', 'initial_hour', 'final_hour', 'id_environment'];
+    protected $fillable = ['course_id', 'document_instructor', 'date_scheduling', 'initial_hour', 'final_hour', 'environment_id'];
 
-    public function course()
+    public function courses()
     {
         return $this->hasMany(Course::class, 'course_id');
     }
