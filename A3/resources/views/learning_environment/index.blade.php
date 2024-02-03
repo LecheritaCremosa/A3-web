@@ -5,7 +5,7 @@
   
     <div class="row">
         <div class="col-lg-12 mb-4 d-grip gap-2 d-md-block">
-            <a href="{{ route('instructor.create') }}" class="btn btn-primary">Crear</a>
+            <a href="{{ route('learning_environment.create') }}" class="btn btn-primary">Crear</a>
         </div>
     </div>
 

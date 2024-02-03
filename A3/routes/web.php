@@ -70,4 +70,44 @@ Route::get('/instructor/edit', function () {
 })->name('instructor.edit');
 
 
+// ruta para ambiente de aprendizaje
+Route::get('/learning_environment/create', function () {
+    return view('learning_environment.create');
+})->name('learning_environment.create');
 
+Route::get('/learning_environment/index', function () {
+    return view('learning_environment.index');
+})->name('learning_environment.index');
+
+Route::get('/learning_environment/edit', function () {
+    return view('learning_environment.edit');
+})->name('learning_environment.edit');
+
+
+
+// ruta para location
+Route::get('/location/create', function () {
+    return view('location.create');
+})->name('location.create');
+
+Route::get('/location/index', function () {
+    return view('location.index');
+})->name('location.index');
+
+Route::get('/location/edit', function () {
+    return view('location.edit');
+})->name('location.edit');
+
+
+// ruta para programacion de ambientes
+Route::get('/scheduling_environment/create', function () {
+    return view('scheduling_environment.create');
+})->name('scheduling_environment.create');
+
+Route::get('/scheduling_environment/index', function () {
+    return view('scheduling_environment.index');
+})->name('scheduling_environment.index');
+
+Route::get('/scheduling_environment/edit', function () {
+    return view('scheduling_environment.edit');
+})->name('scheduling_environment.edit');

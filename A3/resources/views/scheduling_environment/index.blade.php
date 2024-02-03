@@ -1,11 +1,11 @@
 @extends('templates.base')
-@section('title', 'Listado Ubicacion')
-@section('header', 'Listado Ubicacion')
+@section('title', 'Listado carreras')
+@section('header', 'Listado carreras')
 @section('content')
   
     <div class="row">
         <div class="col-lg-12 mb-4 d-grip gap-2 d-md-block">
-            <a href="{{ route('location.create') }}" class="btn btn-primary">Crear</a>
+            <a href="{{ route('scheduling_environment.create') }}" class="btn btn-primary">Crear</a>
         </div>
     </div>
 
@@ -15,18 +15,25 @@
         <table id="table_data" class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Direccion</th>
-                    <th>Estado</th>
                   
+                    <th>Curso</th>
+                    <th>Documento instructor</th>
+                    <th>Fecha de planificacion</th>
+                    <th>Hora inicial</th>
+                    <th>Hora final</th>
+                    <th>identificación del entorno</th>
+                   
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Bicentenario</td>
-                    <td>Cl 28 # 19 38</td>
-                    <td>Activo</td>
-                    <td></td>
+                    <td>Gestion documental</td>
+                    <td>1117289218</td>
+                    <td>23/09/2023</td>
+                    <td>8:00</td>
+                    <td>3:00</td>
+                    <td>7</td>
+                   
                     <td>
                         <a href="#" title="editar" class="btn btn-info btn-circle btn-sm">
                             <i class="far fa-edit"></i>

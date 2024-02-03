@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'crear instructor')
-@section('header', 'Crear instructor')
+@section('title', 'crear ambiente de aprendizaje')
+@section('header', 'Crear ambiente de aprendizaje')
 @section('content')
     @include('templates.messages')
     <div class="row">
@@ -62,13 +62,14 @@
                              id="location_id" name="location_id" required>
                         </div>
     
+                        <div class="col-lg-4 mb-4">
                         <label for="status">Estado</label>
                             <select name="status" id="status" class="form-control" required>
-
                                 <option value="">Activo</option>
                                 <option value="contratista">Inactivo</option>
                                </select>
                          </div>
+                        </div>
                    
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
@@ -78,7 +79,7 @@
                             </button>
                     </div>
                     <div class="col-lg-6 mb-4">
-                            <a href="{{ route('instructor.index') }}" class="btn btn-secondary btn-block">
+                            <a href="{{ route('learning_environment.index') }}" class="btn btn-secondary btn-block">
                                Cancelar
                             </a>
                     </div>
