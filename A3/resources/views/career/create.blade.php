@@ -17,8 +17,12 @@
                     <div class="row form-group">
                     <div class="col-lg-12 mb-4">
                         <label for="type">Tipo</label>
-                        <input type="text" class="form-control"
-                         id="type" name="type" required>
+                        <select name="type" id="type" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Tecnico">Tecnico</option>
+                            <OPtion value="Tecnologo">Tecnologo</OPtion>
+                            
+                           </select>
                     </div>
                     
                 </div>

@@ -10,15 +10,17 @@
                 <div class="row form-group">
                     <div class="col-lg-4 mb-4">
                         <label for="course_id">Curso</label>
-                        <input type="number" class="form-control"
-                         id="course_id" name="course_id" required>
+                        <select name="course_id" id="course_id"
+                        class="form-control" required>
+                        <option value="">Seleccionar</option>
                     </div>
                 
                 
                     <div class="col-lg-4 mb-4">   
                             <label for="document_instructor">Documento instructor</label>
-                            <input type="number" class="form-control"
-                             id="document_instructor" name="document_instructor" required>
+                            <select name="document_instructor" id="document_instructor"
+                            class="form-control" required>
+                            <option value="">Seleccionar</option>
                         </div>
                     
 
@@ -49,8 +51,9 @@
                         <div class="col-lg-4 mb-4">
                             <div class="col-lg-4 mb-4">
                                 <label for="environment_id ">identificación del entorno</label>
-                                <input type="number" class="form-control"
-                                 id="environment_id " name="environment_id " required>
+                                <select name="enviroment_id" id="enviroment_id"
+                                class="form-control" required>
+                                <option value="">Seleccionar</option>
                             </div>
                         
                      </div>

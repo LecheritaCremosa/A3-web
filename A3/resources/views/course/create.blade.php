@@ -28,8 +28,10 @@
                     
                         <div class="col-lg-4 mb-4">
                             <label for="career_id">Carrera</label>
-                            <input type="text" class="form-control"
-                             id="career_id" name="career_id" required>
+                            <select name="career_id" id="career_id"
+                            class="form-control" required>
+                            <option value="">Seleccionar</option>
+                        </select>   
                         </div>
                     </div>
              
