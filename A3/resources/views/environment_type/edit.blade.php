@@ -5,17 +5,18 @@
     @include('templates.messages')
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="#" method="POST">
+            <form action="{{ route('environment_type.update', $environment_type['id']) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="row form-group">
                     <div class="col-lg-12 mb-4">
                         <label for="description">Descripcion</label>
                         <input type="text" class="form-control"
-                         id="description" name="description" required>
+                         id="description" name="description" required
+                         value="{{ $environment_type['description'] }}">
                     </div>
-                </div>
-                    
-                </div>
+                </div>   
+                
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                             <button class="btn btn-primary btn-block"

@@ -5,7 +5,7 @@
     @include('templates.messages')
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="#" method="POST">
+            <form action="{{ route('instructor.store') }}" method="POST">
                 @csrf
                 <div class="row form-group">
                     <div class="col-lg-4 mb-4">
@@ -50,8 +50,9 @@
                             <label for="type">Tipo</label>
                             <select name="type" id="type" class="form-control" required>
                                 <option value="">Seleccione</option>
-                                <option value="contratista">Contratista</option>
-                                <OPtion value="planta">Planta</OPtion>
+                                @foreach($instructors as $instructor)
+                            <option value="{{ $instructor['value'] }}">{{ $instructor['type'] }} </option>
+                                 @endforeach
                                </select>
                         </div>
                      </div>

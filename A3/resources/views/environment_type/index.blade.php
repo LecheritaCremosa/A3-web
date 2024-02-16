@@ -21,18 +21,20 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($environment_types as $environment_type)
                 <tr>
-                    <td>Taller</td>
+                    <td>{{ $environment_type['description'] }}</td>
                    
                     <td>
-                        <a href="#" title="editar" class="btn btn-info btn-circle btn-sm">
+                        <a href="{{ route('environment_type.edit', $environment_type['id']) }}" title="editar" class="btn btn-info btn-circle btn-sm">
                             <i class="far fa-edit"></i>
                         </a>
-                        <a href="#" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
+                        <a href="{{ route('environment_type.destroy', $environment_type['id']) }}" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

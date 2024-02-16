@@ -19,9 +19,9 @@
                         <label for="shift">Jornada</label>
                         <select name="shift" id="shift" class="form-control" required>
                          <option value="">Seleccione</option>
-                         <option value="diurna">DIURNA</option>
-                         <OPtion value="mixta">MIXTA</OPtion>
-                         <Option value="nocturna">NOCTURNA</Option>
+                         @foreach($shifts as $shift)
+                         <option value="{{ $shift['value'] }}">{{ $shift['name'] }} </option>
+                     @endforeach
                         </select>
                     </div>
 
@@ -55,9 +55,9 @@
                             <label for="status">Estado</label>
                             <select name="status" id="status" class="form-control" required>
                                 <option value="">Seleccione</option>
-                                <option value="lectiva">LECTIVA</option>
-                                <OPtion value="productiva">PRODUCTIVA</OPtion>
-                                <Option value="induccion">INDUCCION</Option>
+                                @foreach($status as $status)
+                                <option value="{{ $status['value'] }}">{{ $status['name'] }} </option>
+                            @endforeach
                                </select>
                         </div>
                      </div>
