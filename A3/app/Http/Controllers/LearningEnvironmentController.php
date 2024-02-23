@@ -9,6 +9,28 @@ use Illuminate\Http\Request;
 
 class LearningEnvironmentController extends Controller
 {
+    private $rules = [
+        'name' => 'required|string|max:50|min:2',
+        'capacity' => 'numeric|min:3|max:999999999',
+        'area_mt2' => 'numeric|max:999999999|min:3',
+        'floor' => 'required|string|max:50|min:1',
+        'inventory' => 'string|max:150|min:1',
+        'type_id' => 'numeric',
+        'location_id' => 'numeric',
+        'status' => 'string|max:20|min:5',
+    ];
+
+    private $traductionAttributes = [
+        'name' => 'Nombre',
+        'capacity' => 'Capacidad',
+        'area_mt2' => 'Area',
+        'floor' => 'Piso',
+        'inventory' => 'Inventario',
+        'type_id' => 'Tipo',
+        'location_id' => 'Ubicación',
+        'status' => 'Estado',
+    ];
+    
     /**
      * Display a listing of the resource.
      */
@@ -60,13 +82,13 @@ class LearningEnvironmentController extends Controller
         $learning_environment = LearningEnvironment::find($id);
         if($learning_environment) 
         {
-            $environments_types = EnvironmentType::all();
+            $environment_types = EnvironmentType::all();
             $locations = Location::all();
             $status = array(
                 ['name' => 'ACTIVO', 'value' => 'ACTIVO'],
                 ['name' => 'INACTIVO', 'value' => 'INACTIVO'],
             );
-            return view('learning_environment.edit', compact('learning_environment', 'environments_types', 'locations', 'status'));
+            return view('learning_environment.edit', compact('learning_environment', 'environments_types', 'locations', 'status')); //error OTAKUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
         }
 
         session()->flash('warning', 'No se encuentra el registro solicitado');

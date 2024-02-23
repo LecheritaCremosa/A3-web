@@ -31,6 +31,9 @@
                             <select name="career_id" id="career_id"
                             class="form-control" required>
                             <option value="">Seleccionar</option>
+                            @foreach($careers as $career)
+                            <option value="{{ $career['id'] }}">{{ $career['name'] }} </option>
+                            @endforeach
                         </select>   
                         </div>
                 </div>
@@ -39,13 +42,13 @@
                 <div class="row form-group">
                         <div class="col-lg-4 mb-4">
                             <label for="initial_date">Fecha inicial</label>
-                            <input type="text" class="form-control"
+                            <input type="date" class="form-control"
                                 id="initial_date" name="initial_date" required>
                         </div>
 
                         <div class="col-lg-4 mb-4">
                             <label for="final_date">Fecha final</label>
-                            <input type="text" class="form-control"
+                            <input type="date" class="form-control"
                                 id="final_date" name="final_date" required>
                         </div>
                     
@@ -53,8 +56,8 @@
                             <label for="status">Estado</label>
                             <select name="status" id="status" class="form-control" required>
                                 <option value="">Seleccione</option>
-                                @foreach($status as $status)
-                                <option value="{{ $status['value'] }}">{{ $status['name'] }} </option>
+                                @foreach($status as $s)
+                                <option value="{{ $s['value'] }}">{{ $s['name'] }} </option>
                             @endforeach
                                </select>
                         </div>

@@ -22,7 +22,7 @@
                             <label for="name">Nombre</label>
                             <input type="text" class="form-control"
                              id="name" name="name" required
-                             value="{{ $instructor['name'] }}">
+                             value="{{ $instructor['fullname'] }}">
                         </div>
                     
 
@@ -58,7 +58,7 @@
                             <select name="type" id="type" class="form-control" required>
                                 <option value="">Seleccione</option>
                                 @foreach($types as $type)
-                                <option value="{{ $instructor['value'] }}">{{ $instructor['type'] }} </option>
+                                <option value="{{ $type['value'] }}">{{ $type['name'] }} </option>
                                 @endforeach
                                </select>
                         </div>

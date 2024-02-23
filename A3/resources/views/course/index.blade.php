@@ -15,6 +15,7 @@
         <table id="table_data" class="table table-striped table-hover">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Ficha</th>
                     <th>Jornada</th>
                     <th>Carrera</th>
@@ -29,8 +30,9 @@
                 @foreach($courses as $course)
                 <tr>
                     <td>{{ $course['id'] }}</td>
+                    <td>{{ $course['code'] }}</td>
                     <td>{{ $course['shift'] }}</td>
-                    <td>{{ $course['career']}}</td>
+                    <td>{{ optional($course->career)->name ?? ''}}</td>
                     <td>{{ $course['initial_date'] }}</td>
                     <td>{{ $course['final_date'] }}</td>
                     <td>{{ $course['status'] }}</td>

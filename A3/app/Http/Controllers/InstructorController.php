@@ -65,23 +65,20 @@ class InstructorController extends Controller
         
             
             return view('instructor.edit', compact('instructor', 'types'));
+        }
+
+        session()->flash('warning', 'No se encuentra el registro solicitado');
+        return redirect()->route('instructor.index');
         
-        }
-
-
-        else
-        {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
-            return redirect()->route('instructor.index');
-        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $document)
+    public function update(Request $request, string $id)
     {
-        $instructor = Instructor::where('document', '=', $document)->first();
+        $request['password'] = Hash::make($request['password']);
+        $instructor = Instructor::find($id);
         if($instructor)
         {
             $instructor->update($request->all());

@@ -33,16 +33,24 @@
                     
                         <div class="col-lg-4 mb-4">
                             <label for="career_id">Carrera</label>
-                            <input type="text" class="form-control"
-                             id="career_id" name="career_id" required
-                             value="{{ $course['career'] }}">
+                            <select class="form-control"
+                             id="career_id" name="career_id" required>
+                            <option value="">Seleccionar</option>
+                            @foreach($careers as $career)
+                            <option value="{{ $career['id'] }}"
+                             @if($career['id'] == $course['career_id']) selected @endif>
+                             {{ $career['name'] }} 
+                             {{ $career['type'] }}
+                            </option>
+                            @endforeach
+                            </select>
                         </div>
                 </div>
               
                 <div class="row form-group">
                     <div class="col-lg-4 mb-4">
                         <label for="initial_date">Fecha inicial</label>
-                        <input type="text" class="form-control"
+                        <input type="date" class="form-control"
                          id="initial_date" name="initial_date" required
                          value="{{ $course['initial_date'] }}">
                     </div>
@@ -50,7 +58,7 @@
                     
                     <div class="col-lg-4 mb-4">
                         <label for="final_date">Fecha final</label>
-                        <input type="text" class="form-control"
+                        <input type="date" class="form-control"
                          id="final_date" name="final_date" required
                          value="{{ $course['final_date'] }}">
                     </div>
@@ -65,6 +73,7 @@
                               @if($status['value'] == $course['status']) selected @endif>
                               {{ $status['name'] }} </option>
                              @endforeach
+                            </select>
                     </div>
                 </div>
                 

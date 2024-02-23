@@ -12,8 +12,8 @@ class EnvironmentTypeController extends Controller
      */
     public function index()
     {
-        $environment_types = EnvironmentType::all(); // select * from career
-        return view('environment_type.index', compact('environment_types'));
+        $environments_types = EnvironmentType::all(); // select * from career
+        return view('environment_type.index', compact('environments_types'));
     }
 
     /**

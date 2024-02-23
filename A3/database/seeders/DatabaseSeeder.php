@@ -24,10 +24,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(CareerSeeder::class);
+        /*$this->call(CareerSeeder::class);
         $this->call(CourseSeeder::class);
         $this->call(EnvironmentTypeSeeder::class);
-        $this->call(LocationSeeder::class);
+        $this->call(LocationSeeder::class);*/
 
        /* InstructorFactory::factory()->create([
             'type' => 'Contratista',
@@ -53,11 +53,11 @@ class DatabaseSeeder extends Seeder
         User::factory(5)->create();*/
 
 
-       $this->call(TestCareerSeeder::class);
-       $this->call(TestEnvironmentTypeSeeder::class);
-       $this->call(TestInstructorSeeder::class);
-       $this->call(TestLearningEnvironmentSeeder::class);
-       $this->call(TestLocationSeeder::class);
-       $this->call(TestSchedulingEnvironmentSeeder::class);
+       //$this->call(TestCareerSeeder::class);
+       //$this->call(TestEnvironmentTypeSeeder::class);
+       //$this->call(TestInstructorSeeder::class);
+       //$this->call(TestLearningEnvironmentSeeder::class);
+       //$this->call(TestLocationSeeder::class);
+       //$this->call(TestSchedulingEnvironmentSeeder::class);
     }
 }

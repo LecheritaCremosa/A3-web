@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class CareerController extends Controller
 {
+    private $rules = [
+        'name' => 'required|max:100|min:8',
+        'type' => 'required|max:100|min:8',
+    ];
+
+    private $traductionAttributes = [
+        'name' => 'Nombre',
+        'type' => 'Tipo',
+    ];
+    
     /**
      * Display a listing of the resource.
      */
@@ -22,8 +32,8 @@ class CareerController extends Controller
     public function create()
     {
         $types = array(
-            ['name' => 'Tecnico', 'value' => 'Tecnico'],
-            ['name' => 'Tecnologo', 'value' => 'Tecnologo'],
+            ['name' => 'TÉCNICO', 'value' => 'TÉCNICO'],
+            ['name' => 'TECNOLOGO', 'value' => 'TECNOLOGO'],
          
             
         );
@@ -57,14 +67,14 @@ class CareerController extends Controller
         if($career)
         {
         $types = array(
-                ['name' => 'Tecnico', 'value' => 'Tecnico'],
-                ['name' => 'Tecnologo', 'value' => 'Tecnologo'],   
+                ['name' => 'TECNICO', 'value' => 'TECNICO'],
+                ['name' => 'TECNOLOGO', 'value' => 'TECNOLOGO'],   
             );
          return view('career.edit', compact('career', 'types'));
         
         }
 
-        session()->flash('warning', 'No se encuntra el registro solicitado');
+        session()->flash('warning', 'No se encuentra el registro solicitado');
         return redirect()->route('career.index');
     }
 

@@ -4,9 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CourseController extends Controller
 {
+    
+    private $rules = [
+        'code' => 'required',
+        'shift' => 'required',
+        'career_id' => 'required',
+        'initial_date' => 'required',
+        'final_date' => 'required',
+        'status' => 'required',
+
+    ];
+
+    private $traductionAttributes = [
+        'code' => 'Código',
+        'shift' => 'Turno',
+        'career_id' => 'Carrera',
+        'initial_date' => 'Fecha de inicio',
+        'final_date' => 'Fecha de finalización',
+        'status' => 'Estatus',  
+    ];
+    
     /**
      * Display a listing of the resource.
      */
@@ -22,14 +43,14 @@ class CourseController extends Controller
     public function create()
     {
         $shifts = array(
-            ['name' => 'diurna', 'value' => 'DIURNA'],
-            ['name' => 'mixta', 'value' => 'MIXTA'],
-            ['name' => 'nocturna', 'value' => 'NOCTURNA'],  
+            ['name' => 'DIURNA', 'value' => 'DIURNA'],
+            ['name' => 'MIXTA', 'value' => 'MIXTA'],
+            ['name' => 'NOCTURNA', 'value' => 'NOCTURNA'],  
         );
         $status = array(
-            ['name' => 'lectiva', 'value' => 'LECTIVA'],
-            ['name' => 'productiva', 'value' => 'PRODUCTIVA'],
-            ['name' => 'induccion', 'value' => 'INDUCCION'],
+            ['name' => 'LECTIVA', 'value' => 'LECTIVA'],
+            ['name' => 'PRODUCTIVA', 'value' => 'PRODUCTIVA'],
+            ['name' => 'INDUCCION', 'value' => 'INDUCCION'],
         );
         return view('course.create', compact('status', 'shifts' ));
     }
@@ -39,6 +60,9 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if($validator->fails())
         $request->validate([
             'name' => 'required',
             'shift' => 'required',
@@ -66,18 +90,18 @@ class CourseController extends Controller
         if($course)
         {
             $shifts = array(
-                ['name' => 'diurna', 'value' => 'DIURNA'],
-                ['name' => 'mixta', 'value' => 'MIXTA'],
-                ['name' => 'nocturna', 'value' => 'NOCTURNA'],  
+                ['name' => 'DIURNA', 'value' => 'DIURNA'],
+                ['name' => 'MIXTA', 'value' => 'MIXTA'],
+                ['name' => 'NOCTURNA', 'value' => 'NOCTURNA'],  
             );
             $status = array(
-                ['name' => 'lectiva', 'value' => 'LECTIVA'],
-                ['name' => 'productiva', 'value' => 'PRODUCTIVA'],
-                ['name' => 'induccion', 'value' => 'INDUCCION'],
+                ['name' => 'LECTIVA', 'value' => 'LECTIVA'],
+                ['name' => 'PRODUCTIVA', 'value' => 'PRODUCTIVA'],
+                ['name' => 'INDUCCION', 'value' => 'INDUCCION'],
             );
             return view('course.edit', compact('course', 'status', 'shifts'));
         }
-        session()->flash('warning', 'No se encuntra el registro solicitado');
+        session()->flash('warning', 'No se encuentra el registro solicitado');
         return redirect()->route('course.index');
     }
 
@@ -86,6 +110,13 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validator = Validator::make($request->all(), $this->rules);
+        if($validator->fails())
+        {
+            $errors = $validator->errors();
+            return redirect()->route('course.edit', $id)->withInput()->withErrors($errors);
+        }
+
         $course = Course::find($id);
         if($course) // si la carrera existe
         {
