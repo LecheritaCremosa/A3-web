@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Instructor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use PHPUnit\TextUI\XmlConfiguration\IntroduceCacheDirectoryAttribute;
 
 class InstructorController extends Controller
@@ -23,16 +24,12 @@ class InstructorController extends Controller
     public function create()
     {
         $instructor = Instructor::all();
-        if($instructor)
-        {
-            $types = array(
-                ['name' => 'Contratista', 'value' => 'CONTRATISTA'],
-                ['name' => 'Planta', 'value' => 'PLANTA'], 
-            );
-            return view('instructor.create', compact('instructor', 'types'));
-        }
+        $types = array(
+            ['name' => 'CONTRATISTA', 'value' => 'CONTRATISTA'],
+            ['name' => 'PLANTA', 'value' => 'PLANTA'] 
+        );
 
-        return redirect()->route('instructor.index');
+        return view('instructor.create', compact('instructor', 'types'));
     }
 
     /**
@@ -58,18 +55,25 @@ class InstructorController extends Controller
      */
     public function edit(string $id)
     {
-    
-        $instructor = Instructor::where('document', '=', $id)->first();
+        $instructor = Instructor::find($id);
         if($instructor)
         {
-        $types = array(
-                ['name' => 'Contratista', 'value' => 'CONTRATISTA'],
-                ['name' => 'Planta', 'value' => 'PLANTA'] 
+            $types = array(
+                ['name' => 'CONTRATISTA', 'value' => 'CONTRATISTA'],
+                ['name' => 'PLANTA', 'value' => 'PLANTA'] 
             );
-         return view('instructor.edit', compact('instructor', 'types'));
+        
+            
+            return view('instructor.edit', compact('instructor', 'types'));
+        
         }
-        session()->flash('warning', 'No se encuentra el registro solicitado');
-        return redirect()->route('instructor.index');
+
+
+        else
+        {
+            session()->flash('warning', 'No se encuentra el registro solicitado');
+            return redirect()->route('instructor.index');
+        }
     }
 
     /**
@@ -80,23 +84,14 @@ class InstructorController extends Controller
         $instructor = Instructor::where('document', '=', $document)->first();
         if($instructor)
         {
-            $instructor->fullname = $request->fullname;
-            $instructor->sena_email = $request->sena_email;
-            $instructor->personal_email = $request->personal_email;
-            $instructor->phone = $request->phone;
-            $instructor->password = $request->password;
-            $instructor->type = $request->type;
-            $instructor->profile = $request->profile;
-            $instructor->save();
+            $instructor->update($request->all());
             session()->flash('message', 'Registro actualizado exitosamente');
-            
         }
         else
         {
             session()->flash('warning', 'No se encuentra el registro solicitado');
         }
-
-        return redirect()->route('technician.index');
+        return redirect()->route('instructor.index');
     }
 
     /**
@@ -104,19 +99,17 @@ class InstructorController extends Controller
      */
     public function destroy(string $id)
     {
-        $instructor = Instructor::where('document', '=', $id)->first();
-        if($instructor)
+        $instructor = Instructor::find($id);
+        if($instructor) // si la causal existe
         {
-            
-            $instructor->delete();
+            $instructor->delete(); //delete from causal where id = x
             session()->flash('message', 'Registro eliminado exitosamente');
-            
         }
         else
         {
             session()->flash('warning', 'No se encuentra el registro solicitado');
+           
         }
-
         return redirect()->route('instructor.index');
     }
 }

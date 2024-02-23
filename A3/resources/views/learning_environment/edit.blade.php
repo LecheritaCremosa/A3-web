@@ -1,11 +1,11 @@
 @extends('templates.base')
-@section('title', 'crear ambiente de aprendizaje')
-@section('header', 'Crear ambiente de aprendizaje')
+@section('title', 'Editar Ambiente de Aprendizaje')
+@section('header', 'Editar Ambiente de Aprendizaje')
 @section('content')
     @include('templates.messages')
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="#" method="POST">
+            <form action="{{ route('learning_environment.update', $learning_environment['id']) }}" method="POST">
                 @csrf
                 <div class="row form-group">
                     <div class="col-lg-4 mb-4">

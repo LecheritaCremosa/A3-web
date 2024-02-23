@@ -1,11 +1,11 @@
 @extends('templates.base')
-@section('title', 'crear curso')
-@section('header', 'Crear curso')
+@section('title', 'Crear Curso')
+@section('header', 'Crear Curso')
 @section('content')
     @include('templates.messages')
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="#" method="POST">
+            <form action="{{ route('course.store') }}" method="POST">
                 @csrf
                 <div class="row form-group">
                     <div class="col-lg-4 mb-4">
@@ -21,7 +21,7 @@
                          <option value="">Seleccione</option>
                          @foreach($shifts as $shift)
                          <option value="{{ $shift['value'] }}">{{ $shift['name'] }} </option>
-                     @endforeach
+                        @endforeach
                         </select>
                     </div>
 
@@ -33,23 +33,21 @@
                             <option value="">Seleccionar</option>
                         </select>   
                         </div>
-                    </div>
-             
+                </div>
+                    
 
-                
-                
                 <div class="row form-group">
-                    <div class="col-lg-4 mb-4">
-                        <label for="initial_date">Fecha inicial</label>
-                        <input type="text" class="form-control"
-                         id="initial_date" name="initial_date" required>
-                    </div>
+                        <div class="col-lg-4 mb-4">
+                            <label for="initial_date">Fecha inicial</label>
+                            <input type="text" class="form-control"
+                                id="initial_date" name="initial_date" required>
+                        </div>
 
                         <div class="col-lg-4 mb-4">
-                        <label for="final_date">Fecha final</label>
-                        <input type="text" class="form-control"
-                         id="final_date" name="final_date" required>
-                    </div>
+                            <label for="final_date">Fecha final</label>
+                            <input type="text" class="form-control"
+                                id="final_date" name="final_date" required>
+                        </div>
                     
                         <div class="col-lg-4 mb-4">
                             <label for="status">Estado</label>
@@ -60,21 +58,21 @@
                             @endforeach
                                </select>
                         </div>
-                     </div>
+                    </div>
                    
-                <div class="row form-group">
-                    <div class="col-lg-6 mb-4">
+                    <div class="row form-group">
+                        <div class="col-lg-6 mb-4">
                             <button class="btn btn-primary btn-block"
                                 type="submit">
                                Guardar
                             </button>
-                    </div>
-                    <div class="col-lg-6 mb-4">
+                        </div>
+                        <div class="col-lg-6 mb-4">
                             <a href="{{ route('course.index') }}" class="btn btn-secondary btn-block">
                                Cancelar
                             </a>
+                        </div>
                     </div>
-                </div>
             </form>
         </div>
     </div>

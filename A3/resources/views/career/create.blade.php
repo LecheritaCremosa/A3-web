@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'crear carrera')
-@section('header', 'Crear carrera')
+@section('title', 'Crear Carrera')
+@section('header', 'Crear Carrera')
 @section('content')
     @include('templates.messages')
     <div class="row">

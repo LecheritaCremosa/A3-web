@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'crear carrera')
-@section('header', 'Crear carrera')
+@section('title', 'Editar Curso')
+@section('header', 'Editar Curso')
 @section('content')
     @include('templates.messages')
     <div class="row">
@@ -15,8 +15,8 @@
                          id="code" name="code" required
                          value="{{ $course['code'] }}">
                     </div>
-                </div>
-                    <div class="row form-group">
+                
+                   
                     <div class="col-lg-4 mb-4">
                         <label for="shift">Jornada</label>
                         <select name="shift" id="shift" class="form-control" required>
@@ -27,17 +27,16 @@
                              {{ $shift['name'] }} </option>
                         @endforeach
                      
-                    </select>
+                        </select>
                     </div>
                     
-                    <div class="row form-group">
+                    
                         <div class="col-lg-4 mb-4">
                             <label for="career_id">Carrera</label>
                             <input type="text" class="form-control"
                              id="career_id" name="career_id" required
                              value="{{ $course['career'] }}">
                         </div>
-                    
                 </div>
               
                 <div class="row form-group">
@@ -48,15 +47,16 @@
                          value="{{ $course['initial_date'] }}">
                     </div>
                 
-                    <div class="row form-group">
+                    
                     <div class="col-lg-4 mb-4">
                         <label for="final_date">Fecha final</label>
                         <input type="text" class="form-control"
                          id="final_date" name="final_date" required
                          value="{{ $course['final_date'] }}">
                     </div>
-                    <div class="row form-group">
-                        <div class="col-lg-4 mb-4">
+                
+                    
+                    <div class="col-lg-4 mb-4">
                             <label for="status">Estado</label>
                             <select name="status" id="status" class="form-control" required>
                              <option value="">Seleccione</option>
@@ -64,10 +64,10 @@
                              <option value="{{ $status['value'] }}"
                               @if($status['value'] == $course['status']) selected @endif>
                               {{ $status['name'] }} </option>
-                         @endforeach
-                        </div>
-                    
+                             @endforeach
+                    </div>
                 </div>
+                
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                             <button class="btn btn-primary btn-block"
@@ -76,7 +76,7 @@
                             </button>
                     </div>
                     <div class="col-lg-6 mb-4">
-                            <a href="{{ route('career.index') }}" class="btn btn-secondary btn-block">
+                            <a href="{{ route('course.index') }}" class="btn btn-secondary btn-block">
                                Cancelar
                             </a>
                     </div>

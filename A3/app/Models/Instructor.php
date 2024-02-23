@@ -9,7 +9,7 @@ class Instructor extends Model
 {
     use HasFactory;
     protected $table = 'instructor';
-    protected $fillable = ['full_name', 'sena_email', 'personal_email', 'phone', 'password', 'type', 'profile'];
+    protected $fillable = ['document', 'fullname', 'sena_email', 'personal_email', 'phone', 'password', 'type', 'profile'];
 
     public function scheduling_environments()
     {

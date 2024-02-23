@@ -26,10 +26,10 @@
                     <td>{{ $environment_type['description'] }}</td>
                    
                     <td>
-                        <a href="{{ route('environment_type.edit', $environment_type['id']) }}" title="editar" class="btn btn-info btn-circle btn-sm">
+                        <a href="{{ route('environment_type.edit', $environment_type['id']) }}" title="Editar" class="btn btn-info btn-circle btn-sm">
                             <i class="far fa-edit"></i>
                         </a>
-                        <a href="{{ route('environment_type.destroy', $environment_type['id']) }}" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
+                        <a href="{{ route('environment_type.destroy', $environment_type['id']) }}" title="Eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>

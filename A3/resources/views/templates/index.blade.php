@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12 mb-4">
             <p align="justify">
-              a3-WEB es una aplicacion para ganar nota en programacion:
+              A3-WEB es una aplicacion para ganar nota en programacion:
             </p>
             <p>
                 <ul>

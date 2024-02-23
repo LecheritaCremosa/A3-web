@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'crear Tipo de ambiente')
-@section('header', 'Crear Tipo de ambiente')
+@section('title', 'Editar Tipo de Ambiente')
+@section('header', 'Editar Tipo de Ambiente')
 @section('content')
     @include('templates.messages')
     <div class="row">

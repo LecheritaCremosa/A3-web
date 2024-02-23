@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Listado instructores')
-@section('header', 'Listado instructores')
+@section('title', 'Listado de instructores')
+@section('header', 'Listado de instructores')
 @section('content')
   
     <div class="row">
@@ -16,6 +16,7 @@
             <thead>
                 <tr>
                   
+                    <th>ID</th>
                     <th>Documento</th>
                     <th>Nombre</th>
                     <th>Correo Sena</th>
@@ -30,6 +31,7 @@
             <tbody>
                 @foreach($instructors as $instructor)
                 <tr>
+                    <td>{{ $instructor['id'] }}</td>
                     <td>{{ $instructor['document'] }}</td>
                     <td>{{ $instructor['fullname'] }}</td>
                     <td>{{ $instructor['sena_email'] }}</td>
@@ -39,10 +41,10 @@
                     <td>{{ $instructor['type'] }}</td>
                     <td>{{ $instructor['profile'] }}</td>
                     <td>
-                        <a href="{{ route('instructor.edit', $instructor['document']) }}" title="editar" class="btn btn-info btn-circle btn-sm">
+                        <a href="{{ route('instructor.edit', $instructor['id']) }}" title="editar" class="btn btn-info btn-circle btn-sm">
                             <i class="far fa-edit"></i>
                         </a>
-                        <a href="{{ route('instructor.destroy', $instructor['document']) }}" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
+                        <a href="{{ route('instructor.destroy', $instructor['id']) }}" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>

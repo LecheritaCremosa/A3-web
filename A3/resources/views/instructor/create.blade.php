@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'crear instructor')
-@section('header', 'Crear instructor')
+@section('title', 'Crear Instructor')
+@section('header', 'Crear Instructor')
 @section('content')
     @include('templates.messages')
     <div class="row">
@@ -16,19 +16,19 @@
                 
                 
                     <div class="col-lg-4 mb-4">   
-                            <label for="name">Nombre</label>
-                            <input type="text" class="form-control"
-                             id="name" name="name" required>
-                        </div>
+                        <label for="fullname">Nombre</label>
+                        <input type="text" class="form-control"
+                         id="fullname" name="fullname" required>
+                    </div>
                     
 
                     
-                        <div class="col-lg-4 mb-4">
-                            <label for="sena_email">Correo Sena</label>
-                            <input type="email" class="form-control"
-                             id="sena_email" name="sena_email" required>
-                        </div>
+                    <div class="col-lg-4 mb-4">
+                        <label for="sena_email">Correo Sena</label>
+                        <input type="email" class="form-control"
+                         id="sena_email" name="sena_email" required>
                     </div>
+                </div>
              
 
                 
@@ -50,12 +50,12 @@
                             <label for="type">Tipo</label>
                             <select name="type" id="type" class="form-control" required>
                                 <option value="">Seleccione</option>
-                                @foreach($instructors as $instructor)
-                            <option value="{{ $instructor['value'] }}">{{ $instructor['type'] }} </option>
+                                @foreach($types as $type)
+                            <option value="{{ $type['value'] }}">{{ $type['name'] }} </option>
                                  @endforeach
                                </select>
                         </div>
-                     </div>
+                </div>
 
                      <div class="row form-group">
                         <div class="col-lg-4 mb-4">
@@ -64,12 +64,12 @@
                              id="password" name="password" required>
                         </div>
     
-                            <div class="col-lg-4 mb-4">
+                        <div class="col-lg-4 mb-4">
                             <label for="profile">Perfil</label>
                             <input type="text" class="form-control"
                              id="profile" name="profile" required>
                         </div>
-                         </div>
+                    </div>
                    
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
