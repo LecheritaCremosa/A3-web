@@ -15,14 +15,16 @@
         <table id="table_data" class="table table-striped table-hover">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Descripcionn</th>
-                    <th>Acciones</th>
+                    
                   
                 </tr>
             </thead>
             <tbody>
-                @foreach($environment_types as $environment_type)
+                @foreach($environments_types as $environment_type)
                 <tr>
+                    <td>{{ $environment_type['id'] }}</td>
                     <td>{{ $environment_type['description'] }}</td>
                    
                     <td>

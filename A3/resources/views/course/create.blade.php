@@ -31,9 +31,14 @@
                             <select name="career_id" id="career_id"
                             class="form-control" required>
                             <option value="">Seleccionar</option>
+                            @isset($carrers)
+                                
+                          
                             @foreach($careers as $career)
-                            <option value="{{ $career['id'] }}">{{ $career['name'] }} </option>
+                            <option value="{{ $Career['value'] }}"@if (old('career') == $career['name']) selected @endif> 
+                                {{ $career['name'] }} </option>
                             @endforeach
+                            @endisset
                         </select>   
                         </div>
                 </div>

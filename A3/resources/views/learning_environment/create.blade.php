@@ -75,13 +75,13 @@
                         <label for="status">Estado</label>
                             <select name="status" id="status" class="form-control" required>
                                 <option value="">Seleccione</option>
-                                @foreach($status as $s)
-                                <option value="{{ $s['value'] }}">{{ $s['name'] }} </option>
+                                @foreach($status as $status)
+                                <option value="{{ $status['value'] }}">{{ $status['name'] }} </option>
                                  @endforeach
                                </select>
                         </div>
                 </div>        
-        </div>
+        
                    
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">

@@ -6,6 +6,7 @@ use App\Models\EnvironmentType;
 use App\Models\LearningEnvironment;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class LearningEnvironmentController extends Controller
 {
@@ -61,6 +62,14 @@ class LearningEnvironmentController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return redirect()->route('learning_environment.create')->withInput()->withErrors($errors);
+        }
+
         $learning_environment = LearningEnvironment::create($request->all());
         session()->flash('message', 'Registro creado exitosamente');
         return redirect()->route('learning_environment.index');
@@ -99,6 +108,13 @@ class LearningEnvironmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return redirect()->route('learning_environment.edit')->withInput()->withErrors($errors);
+        }
+        
         $learning_environment = LearningEnvironment::find($id);
         if($learning_environment) 
         {

@@ -112,8 +112,8 @@
                 </a>
                 <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ 'learning_environment.index' }}">Consultar</a>
-                        <a class="collapse-item" href="{{ 'learning_environment.create' }}">Crear</a>
+                        <a class="collapse-item" href="{{ route('learning_environment.index') }}">Consultar</a>
+                        <a class="collapse-item" href="{{ route('learning_environment.create') }}">Crear</a>
                     </div>
                 </div>
             </li>

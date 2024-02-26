@@ -7,6 +7,7 @@
         <div class="col-lg-12 mb-4">
             <form action="{{ route('learning_environment.update', $learning_environment['id']) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="row form-group">
                     <div class="col-lg-4 mb-4">
                         <label for="name">Nombre</label>

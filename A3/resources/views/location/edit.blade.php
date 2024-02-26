@@ -9,22 +9,25 @@
                 @csrf
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
-                        <label for="location">Ubicacion</label>
+                        <label for="name">Nombre</label>
                         <input type="text" class="form-control"
-                         id="location" name="location" required>
+                         id="name" name="name" required
+                         value="{{ $location['name'] }}">
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="address">Direccion</label>
                         <input type="text" class="form-control"
-                         id="address" name="address" required>
+                         id="address" name="address" required
+                         value="{{ $location['address'] }}">
                     </div>
                     
                 </div>
                     <div class="row form-group">
                     <div class="col-lg-12 mb-4">
                         <label for="status">Estado</label>
-                        <select name="status" id="status" class="form-control" required>
-                            <option value="">Seleccione</option>
+                        <select name="status" id="status" class="form-control" required
+                        {{ $location['status'] }}>
+                       
                             <option value="activo">Activo</option>
                             <OPtion value="inactivo">Inactivo</OPtion>
                            </select>

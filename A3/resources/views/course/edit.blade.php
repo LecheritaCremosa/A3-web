@@ -36,13 +36,8 @@
                             <select class="form-control"
                              id="career_id" name="career_id" required>
                             <option value="">Seleccionar</option>
-                            @foreach($careers as $career)
-                            <option value="{{ $career['id'] }}"
-                             @if($career['id'] == $course['career_id']) selected @endif>
-                             {{ $career['name'] }} 
-                             {{ $career['type'] }}
-                            </option>
-                            @endforeach
+                           <option value="1">TPS</option>
+                           <option value="2"></option>
                             </select>
                         </div>
                 </div>

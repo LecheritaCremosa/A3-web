@@ -15,6 +15,7 @@
         <table id="table_data" class="table table-striped table-hover">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Nombre</th>
                     <th>Direccion</th>
                     <th>Estado</th>
@@ -22,20 +23,24 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($locations as $location)
                 <tr>
-                    <td>Bicentenario</td>
-                    <td>Cl 28 # 19 38</td>
-                    <td>Activo</td>
-                    <td></td>
+                    <td>{{ $location['id'] }}</td>
+                    <td>{{ $location['name'] }}</td>
+                    <td>{{ $location['address'] }}</td>
+                    <td>{{ $location['status'] }}</td>
+
                     <td>
-                        <a href="#" title="editar" class="btn btn-info btn-circle btn-sm">
+
+                        <a href="{{ route('location.edit', $location['id']) }}" title="editar" class="btn btn-info btn-circle btn-sm">
                             <i class="far fa-edit"></i>
                         </a>
-                        <a href="#" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
+                        <a href="{{ route('location.destroy', $location['id']) }}" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

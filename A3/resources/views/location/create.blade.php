@@ -9,11 +9,11 @@
                 @csrf
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
-                        <label for="location">Ubicacion</label>
+                        <label for="name">Nombre</label>
                         <input type="text" class="form-control"
-                         id="location" name="location" required>
+                         id="name" name="name" required>
                     </div>
-                    <div class="col-lg-6 mb-4">
+                    <div class="col-lg-6 mb-4">+
                         <label for="address">Direccion</label>
                         <input type="text" class="form-control"
                          id="address" name="address" required>

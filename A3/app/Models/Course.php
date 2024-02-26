@@ -9,7 +9,7 @@ class Course extends Model
 {
     use HasFactory;
     protected $table = 'course';
-    protected $fillable = ['shift', 'career_id', 'initial_date', 'final_date', 'status' ];
+    protected $fillable = ['code','shift', 'career_id', 'initial_date', 'final_date', 'status' ];
 
     public function carrers()
     {

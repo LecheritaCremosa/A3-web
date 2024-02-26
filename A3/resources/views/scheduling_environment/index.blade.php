@@ -15,7 +15,7 @@
         <table id="table_data" class="table table-striped table-hover">
             <thead>
                 <tr>
-                  
+                    <th>Id</th>
                     <th>Curso</th>
                     <th>Documento instructor</th>
                     <th>Fecha de planificacion</th>
@@ -26,23 +26,26 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($scheduling_environments as $scheduling_environment)
                 <tr>
-                    <td>Gestion documental</td>
-                    <td>1117289218</td>
-                    <td>23/09/2023</td>
-                    <td>8:00</td>
-                    <td>3:00</td>
-                    <td>7</td>
+                    <td>{{ $scheduling_environment->id }}</td>
+                    <td>{{ $scheduling_environment->course_id }}</td>
+                    <td>{{ $scheduling_environment->instructor_document }}</td>
+                    <td>{{ $scheduling_environment->date_scheduling }}</td>
+                    <td>{{ $scheduling_environment->initial_hour }}</td>
+                    <td>{{ $scheduling_environment->final_hour }}</td>
+                    <td>{{ $scheduling_environment->environment_id }}</td>
                    
                     <td>
-                        <a href="#" title="editar" class="btn btn-info btn-circle btn-sm">
+                        <a href="{{ route('scheduling_environment.edit', $scheduling_environment['id']) }}" title="editar" class="btn btn-info btn-circle btn-sm">
                             <i class="far fa-edit"></i>
                         </a>
-                        <a href="#" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
+                        <a href="{{ route('scheduling_environment.destroy', $scheduling_environment['id']) }}" title="eliminar" class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
