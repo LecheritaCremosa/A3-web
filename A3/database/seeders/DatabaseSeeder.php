@@ -26,10 +26,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CareerSeeder::class);
         $this->call(CourseSeeder::class);
-       /* $this->call(EnvironmentTypeSeeder::class);
+       $this->call(EnvironmentTypeSeeder::class);
         $this->call(LocationSeeder::class);
 
-        InstructorFactory::factory()->create([
+        /*InstructorFactory::factory()->create([
             'type' => 'Contratista',
             'profile' => 'Instructor De Programación']);
 
@@ -48,17 +48,17 @@ class DatabaseSeeder extends Seeder
         Instructor::factory()->create([
             'type' => 'Planta',
             'profile' => 'Instructor De Educación Fisica'
-        ]);
+        ]);*/
 
-        User::factory(5)->create();*/
+        User::factory(5)->create();
 
 
        $this->call(TestCareerSeeder::class);
-       //$this->call(TestEnvironmentTypeSeeder::class);
-       //$this->call(TestInstructorSeeder::class);
-       //$this->call(TestLearningEnvironmentSeeder::class);
-       //$this->call(TestLocationSeeder::class);
-       //$this->call(TestSchedulingEnvironmentSeeder::class);
+       $this->call(TestEnvironmentTypeSeeder::class);
+       $this->call(TestInstructorSeeder::class);
+       $this->call(TestLearningEnvironmentSeeder::class);
+       $this->call(TestLocationSeeder::class);
+       $this->call(TestSchedulingEnvironmentSeeder::class);
        $this->call(TestCourseSeeder::class);
     }
 }

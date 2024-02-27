@@ -114,6 +114,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('learning_environment.index') }}">Consultar</a>
                         <a class="collapse-item" href="{{ route('learning_environment.create') }}">Crear</a>
+                        <a class="collapse-item" href="{{ route('reports.index') }}">Reporte</a>
                     </div>
                 </div>
             </li>
