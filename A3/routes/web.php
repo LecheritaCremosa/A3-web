@@ -65,6 +65,7 @@ Route::middleware(['auth'])->prefix('course')->group(function(){
     Route::post('/create', [CourseController::class, 'store'])->name('course.store');
     Route::put('/edit/{id}', [CourseController::class, 'update'])->name('course.update');
     Route::get('/destroy/{id}', [CourseController::class, 'destroy'])->name('course.destroy');
+    Route::get('/courses/pdf', [ReportController::class, 'generatePdf'])->name('courses.pdf');
 });
 
 
@@ -99,6 +100,9 @@ Route::middleware(['auth'])->prefix('learning_environment')->group(function(){
     Route::post('/create', [LearningEnvironmentController::class, 'store'])->name('learning_environment.store');
     Route::put('/edit/{id}', [LearningEnvironmentController::class, 'update'])->name('learning_environment.update');
     Route::get('/destroy/{id}', [LearningEnvironmentController::class, 'destroy'])->name('learning_environment.destroy');
+    Route::get('/reports' , [LearningEnvironmentController::class, 'reports'])->name('learning_environment.reports');
+    Route::post('/export_learning_environment' , [LearningEnvironmentController::class, 'export_learning_environments'])->name('reports.learning_environments');
+
 });
 
 
@@ -123,10 +127,10 @@ Route::middleware(['auth'])->prefix('scheduling_environment')->group(function(){
     Route::post('/create', [SchedulingEnvironmentController::class, 'store'])->name('scheduling_environment.store');
     Route::put('/edit/{id}', [SchedulingEnvironmentController::class, 'update'])->name('scheduling_environment.update');
     Route::get('/destroy/{id}', [SchedulingEnvironmentController::class, 'destroy'])->name('scheduling_environment.destroy');
+    
 });
 
-Route::middleware(['auth',])->prefix('reports')->group(function(){
-    Route::get('/index' , [ReportController::class, 'index'])->name('reports.index');
-    Route::post('/export_learning_environment' , [ReportController::class, 'export_learning_environment'])->name('reports.learning_environment');
+Route::middleware('auth')->prefix('reports')->group(function(){
+    Route::post('/export_scheduling_environments_by_course', [ReportController::class, 'export_scheduling_environments_by_course'])->name('reports.scheduling_environments_course');
+    Route::post('/export_scheduling_environments_by_instructor', [ReportController::class, 'export_scheduling_environments_by_instructor'])->name('reports.scheduling_environents_instructor');
 });
-

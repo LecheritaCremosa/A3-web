@@ -1,27 +1,31 @@
 @extends('templates.base_reports')
-@section('header', 'Reporte General de Ambientes de Aprendizaje Por Ubicación')
+@section('header', 'Reporte reservas de ambientes')
 @section('content')
     <section id="results">
-        @if ($learning_environments)
-            <h3>Ambiente De Aprendizaje</h3>
-            <table id="ReportTableInfo">
-                <thead>
+     @if ($learning_environments)
+         
+        <h3>Reservas</h3>
+        <table id="ReportTableInfo">
+            <thead>
+                <tr>
+                  
+                     <th>Nombre</th>
+                     <th>Descripcion</th>
+                     <th>Lugar</th>
+                 </tr>
+            </thead>
+            <tbody>
+                @foreach ($learning_environments as $learning_environment)
                     <tr>
-                        <th>Ambiente</th>
-                        <th>Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($learning_environments as $learning_environment)
-                    <tr>
-                        <td>{{ $learning_environment['name'] }}</td>
+                        <td>{{ $learning_environment['name']}}</td>
                         <td>{{ $learning_environment->environment_type->description}}</td>
+                        <td>{{ $learning_environment->location->name}}</td>
                     </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        @else
-            <h5>No Existen Actividades</h5>
-        @endif
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <h5>No existen ambientes</h5>
+    @endif
     </section>
 @endsection

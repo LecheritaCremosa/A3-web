@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\EnvironmentType;
 use App\Models\LearningEnvironment;
 use App\Models\Location;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -39,6 +40,26 @@ class LearningEnvironmentController extends Controller
     {
         $learning_environments = LearningEnvironment::all(); 
         return view('learning_environment.index', compact('learning_environments'));
+    }
+
+    public function reports()
+    {
+        $locations = Location::all();
+        return view('learning_environment.reports', compact('locations'));
+    }
+
+    public function export_learning_environments()
+    {
+        
+           $enviroment_types = EnvironmentType::all();
+            $learning_environments = LearningEnvironment::all();
+            $data = array(
+            'learning_environments' => $learning_environments,
+            'enviroment_types' =>  $enviroment_types 
+           );
+            $pdf = Pdf::loadView('reports.export_learning_environment', $data)->setPaper('letter', 'portrait');
+            return $pdf->download('learning_enviroments.pdf');
+    
     }
 
     /**

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/report.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/reports.css') }}">
 </head>
 <body>
     <section id="header">
@@ -33,7 +33,7 @@
     @yield('content')
 
     <footer id="version_text">
-        <p>Generado Por OrderWeb 1.0</p>
+        <p>Generado Por A3-web</p>
     </footer>
 </body>
 </html>

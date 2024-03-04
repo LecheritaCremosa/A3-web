@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Career;
+use App\Models\Course;
 use App\Models\EnvironmentType;
 use App\Models\LearningEnvironment;
+use App\Models\SchedulingEnvironment;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
@@ -14,22 +17,60 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $environment_types = EnvironmentType::all();
+       // $environment_types = EnvironmentType::all();
         $learning_environments = LearningEnvironment::all();
         return view('reports.index', compact('learning_environments'));
     }
 
-    public function export_learning_environment()
+    public function export_learning_environments()
     {
-        $environment_types = EnvironmentType::all();
-        $learning_environments = LearningEnvironment::all();
-        $data = array(
-            'learning_environments' => $learning_environments,
-            'environment_types' => $environment_types
-        );
-        $pdf = Pdf::loadView('reports.export_learning_environment', $data)->setPaper('letter', 'portrait');
-        return $pdf->download('LearningEnvironments.pdf');
+        
+             $enviroment_types = EnvironmentType::all();
+            $learnig_environments = LearningEnvironment::all();
+            $data = array(
+            'learning_environments' => $learnig_environments,
+            'enviroment_types' =>  $enviroment_types 
+           );
+            $pdf = Pdf::loadView('reports.export_learning_environments', $data)->setPaper('letter', 'portrait');
+            return $pdf->download('learning_enviroments.pdf');
+    
     }
+
+    public function generatePdf()
+    {
+        $courses = Course::all();
+        $careers = Career::all()->find('1')->name;
+
+
+        $data = array(
+            'courses' => $courses,
+            'careers' => $careers
+        );
+             $pdf = Pdf::loadView('course.pdf', $data)->setPaper('letter', 'portrait');
+              return $pdf->download('generatePdf.pdf');
+
+     
+    }
+    
+    public function export_scheduling_environments_by_course(Request $request)
+    {
+            $courses = Course::where('id', '=', $request['course_id'])->first();
+            $learning_environments = LearningEnvironment::all();
+            $scheduling_environments = SchedulingEnvironment::whereBetween('date_scheduling',[ $request['initial_date'], $request['final_date']])
+                    ->where('course_id' , '=' , $request['course_id'])->get();
+            $data = array(
+                'initial_date' => $request['initial_date'],
+                'final_date' => $request['final_date'],
+                'courses' => $courses,
+                'learning_environments' => $learning_environments,
+                'scheduling_environments' => $scheduling_environments
+                
+            );
+    
+            $pdf = Pdf::loadView('reports.export_scheduling_environments_by_course', $data)->setPaper('letter','portrait');
+            return $pdf->download('scheduling_environments_by_course.pdf');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

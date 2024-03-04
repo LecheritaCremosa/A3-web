@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Career;
 use App\Models\Course;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,6 +38,22 @@ class CourseController extends Controller
     {
         $courses = Course::all(); // select * from career
         return view('course.index', compact('courses'));
+    }
+
+    public function generatePdf()
+    {
+        $courses = Course::all();
+        $careers = Career::all()->find('1')->name;
+
+
+        $data = array(
+            'courses' => $courses,
+            'careers' => $careers
+        );
+             $pdf = Pdf::loadView('course.pdf', $data)->setPaper('letter', 'portrait');
+              return $pdf->download('generatePdf.pdf');
+
+     
     }
 
     /**
