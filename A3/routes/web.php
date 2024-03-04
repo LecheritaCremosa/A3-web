@@ -127,10 +127,11 @@ Route::middleware(['auth'])->prefix('scheduling_environment')->group(function(){
     Route::post('/create', [SchedulingEnvironmentController::class, 'store'])->name('scheduling_environment.store');
     Route::put('/edit/{id}', [SchedulingEnvironmentController::class, 'update'])->name('scheduling_environment.update');
     Route::get('/destroy/{id}', [SchedulingEnvironmentController::class, 'destroy'])->name('scheduling_environment.destroy');
-    
+    Route::get('/export_scheduling_environments_by_course', [SchedulingEnvironmentController::class, 'export_scheduling_environments_by_course'])->name('scheduling_environment.reports');
+    Route::get('/export_scheduling_environments_by_instructor', [SchedulingEnvironmentController::class, 'export_scheduling_environments_by_instructor'])->name('scheduling_environment_instructor.reports');
 });
 
 Route::middleware('auth')->prefix('reports')->group(function(){
-    Route::post('/export_scheduling_environments_by_course', [ReportController::class, 'export_scheduling_environments_by_course'])->name('reports.scheduling_environments_course');
-    Route::post('/export_scheduling_environments_by_instructor', [ReportController::class, 'export_scheduling_environments_by_instructor'])->name('reports.scheduling_environents_instructor');
+   // Route::post('/export_scheduling_environments_by_course', [ReportController::class, 'export_scheduling_environments_by_course'])->name('reports.scheduling_environments_course');
+   // Route::post('/export_scheduling_environments_by_instructor', [ReportController::class, 'export_scheduling_environments_by_instructor'])->name('reports.scheduling_environents_instructor');
 });

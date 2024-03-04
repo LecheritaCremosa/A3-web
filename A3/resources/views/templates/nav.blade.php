@@ -130,7 +130,9 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('scheduling_environment.index') }}">Consultar</a>
                         <a class="collapse-item" href="{{ route('scheduling_environment.create') }}">Crear</a>
-                        <a class="collapse-item" href="{{ route('reports.scheduling_environments_course') }}">Reportes</a>    
+                        <a class="collapse-item" href="{{ route('scheduling_environment.reports') }}">Reportes</a>   
+                        <a class="collapse-item" href="{{ route('scheduling_environment_instructor.reports') }}">Reportes instructor</a>   
+                        
                       
             </li>
 

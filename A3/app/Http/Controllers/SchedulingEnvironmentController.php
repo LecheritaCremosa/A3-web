@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Instructor;
 use App\Models\LearningEnvironment;
 use App\Models\SchedulingEnvironment;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -33,24 +34,57 @@ class SchedulingEnvironmentController extends Controller
         //dd($causals);
         return view('scheduling_environment.index', compact('scheduling_environments'));
     }
-    public function export_scheduling_environments_by_course(Request $request)
+    public function reports()
     {
-            $courses = Course::where('id', '=', $request['course_id'])->first();
-            $learning_environments = LearningEnvironment::all();
-            $scheduling_environments = SchedulingEnvironment::whereBetween('date_scheduling',[ $request['initial_date'], $request['final_date']])
-                    ->where('course_id' , '=' , $request['course_id'])->get();
-            $data = array(
-                'initial_date' => $request['initial_date'],
-                'final_date' => $request['final_date'],
-                'courses' => $courses,
-                'learning_environments' => $learning_environments,
-                'scheduling_environments' => $scheduling_environments
-                
-            );
-    
-            $pdf = Pdf::loadView('reports.export_scheduling_environments_by_course', $data)->setPaper('letter','portrait');
-            return $pdf->download('scheduling_environments_by_course.pdf');
+       $courses = Course::all();
+       $instructors = Instructor::all();
+       return view('scheduling_environment.reports', compact('courses', 'instructors'));
     }
+
+    public function export_scheduling_environments_by_course(Request $request)
+
+    {
+        
+        
+        $courses = Course::where('id', '=', $request['course_id'])->first();
+        $learning_environments = LearningEnvironment::all();
+        $scheduling_environments = SchedulingEnvironment::whereBetween('date_scheduling', [$request['initial_date'], $request['final_date']])->where();
+        $data = array(
+            'initial_date' => $request['initial_date'],
+            'final_date' => $request['final_date'],
+            'courses' => $courses,
+            'scheduling_environments' => $scheduling_environments,
+            'learning_environments' => $learning_environments
+        );
+        
+        $data = ['scheduling_environments' => $scheduling_environments];
+
+        foreach ($scheduling_environments as $scheduling_environment)    {
+            $courseCode = SchedulingEnvironment::find($scheduling_environment->course_id)->code;
+        
+
+            $data = ['scheduling_environments' => $scheduling_environments, 'courseCode' => $courseCode];
+        }
+        $pdf = Pdf::loadView('reports\export_scheduling_environment', $data)->setPaper('letter', 'portrait');
+        return $pdf->download('SchedulingEnvironmentsByCourse.pdf');
+    }
+
+    public function export_scheduling_environments_by_instructor(Request $request)
+    {
+        $instructors = Instructor::where('id', '=', $request['instructor_document'])->first();
+        $learning_environments = LearningEnvironment::all();
+        $scheduling_environments = SchedulingEnvironment::whereBetween('date_scheduling', [$request['initial_date'], $request['final_date']])->get();
+        $data = array(
+            'initial_date' => $request['initial_date'],
+            'final_date' => $request['final_date'],
+            'instructors' => $instructors,
+            'scheduling_environments' => $scheduling_environments,
+            'learning_environments' => $learning_environments
+        );
+        $pdf = Pdf::loadView('reports\export_scheduling_environment_instructor', $data)->setPaper('letter', 'portrait');
+        return $pdf->download('SchedulingEnvironmentsByInstructor.pdf');
+    }
+
 
     /**
      * Show the form for creating a new resource.
